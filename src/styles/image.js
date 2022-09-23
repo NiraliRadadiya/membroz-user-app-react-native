@@ -37,6 +37,8 @@ import TIMELINEICON from '../../src/assets/images/icons/timeline.png';
 import PAYMENT_ICON from '../../src/assets/images/icons/payment_icon.png';
 import IC_PRESCRIPTION from '../../src/assets/images/icons/ic_prescription.png';
 import REFERICON from '../../src/assets/images/icons/refer.png';
+import CHAT_ICON from '../../src/assets/images/icons/Chat_icon.png';
+import SEND from '../../src/assets/images/icons/send.png';
 
 export {
     BACKGROUND_IMAGE, MEMBROZ_LOGO, HEADER, USERPROFILE, NO_PHOTO, REFERICON,
@@ -44,5 +46,5 @@ export {
     IC_EVENT, IC_GROUP, IC_LIBRARY, IC_LOGIN, IC_QRCODE, IC_SCHEDULE, NOTICE_OUTLINE,
     PENCIL_ICON, PICTURE_ICON, PROFILE_ICON_GREY, CLOCK, PORTFOLIO, PHONE_WITH_WIRE,
     RECORD_ICON, PLUS, SHARE_ICON, PENCIL_ICON_SIMPLE, CALENDAR, TIMELINEICON, PAYMENT_ICON,
-    PADLOCK, LOGOUT, REVIEW, PREMIUM_SERVICES, LOCK_ICON, SUPPORT_ICON, CLAIMICON, IC_PRESCRIPTION
+    PADLOCK, LOGOUT, REVIEW, PREMIUM_SERVICES, LOCK_ICON, SUPPORT_ICON, CLAIMICON, IC_PRESCRIPTION, CHAT_ICON, SEND
 };

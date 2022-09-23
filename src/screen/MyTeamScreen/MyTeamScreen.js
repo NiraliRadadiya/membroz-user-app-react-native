@@ -9,7 +9,7 @@ import {
     StatusBar, RefreshControl, FlatList, Linking
 } from 'react-native';
 import { MemberLanguage } from '../../services/LocalService/LanguageService';
-import { UserListService } from '../../services/UserService/UserService';
+import { getMemberList } from '../../services/MemberService/MemberService';
 import * as LocalService from '../../services/LocalService/LocalService';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import languageConfig from '../../languages/languageConfig';
@@ -59,13 +59,11 @@ export default MyTeamScreen = (props) => {
     //GET MYTEAM API THROUGH FETCH DATA
     const getMyTeamList = async () => {
         try {
-            const response = await UserListService();
+            const response = await getMemberList();
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
-                wait(1000).then(() => {
-                    setLoading(false);
-                    setTeamList(response.data);
-                    setSearchList(response.data);
-                });
+                setLoading(false);
+                setTeamList(response.data);
+                setSearchList(response.data);
             }
         } catch (error) {
             firebase.crashlytics().recordError(error);
@@ -111,9 +109,12 @@ export default MyTeamScreen = (props) => {
                             style={!item.profilepic ? { height: 50, width: 50 } : { height: 70, width: 70, borderRadius: 100 }} />
                     </View>
                     <View style={{ marginTop: 10, flexDirection: KEY.ROW, alignItems: KEY.SPACEBETWEEN }}>
-                        <TouchableOpacity onPress={() => onPressCall(item)}
+                        {/* <TouchableOpacity onPress={() => onPressCall(item)}
                             style={{ marginRight: 0, alignItems: KEY.CENTER }}>
                             <Ionicons size={20} name="call" color={COLOR.DEFALUTCOLOR} style={{ marginRight: 10 }} />
+                        </TouchableOpacity> */}
+                        <TouchableOpacity style={{ alignSelf: KEY.FLEX_END, }} onPress={() => props.navigation.navigate(SCREEN.CHATSCREEN, { memberDetails: item })} >
+                            <Ionicons size={20} name="chatbubbles-sharp" color={COLOR.DEFALUTCOLOR} style={{ marginRight: 0 }} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => onPressEmail(item)}
                             style={{ marginLeft: 10, alignItems: KEY.CENTER }}>
@@ -208,7 +209,6 @@ export default MyTeamScreen = (props) => {
                             colors={[COLOR.DEFALUTCOLOR]}
                             onRefresh={onRefresh} />
                     }
-                    keyExtractor={item => item._id}
                     ListFooterComponent={() => (
                         searchList && searchList.length > 0 ?
                             <></>

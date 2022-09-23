@@ -38,6 +38,8 @@ export const SCANNERSCREEN = 'ScannerScreen';
 export const VIEWIMAGESCREEN = 'ViewImageScreen';
 export const APPOINTMENTSCREEN = 'AppointmentScreen';
 export const APPOINTMENTDETAILSCREEN = 'AppointmentDetailScreen';
+export const CHATSCREEN = 'ChatScreen';
+export const CHATSCREENHISTORY = 'ChatScreenHistory';
 
 
 

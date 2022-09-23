@@ -39,6 +39,9 @@ import SCANNERSCREEN from '../screen/HomeScreen/ScannerScreen';
 import VIEWIMAGESCREEN from '../screen/ViewImageScreen/ViewImageScreen';
 import APPOINTMENTSCREEN from '../screen/AppointmentScreen/AppointmentScreen';
 import APPOINTMENTDETAILSCREEN from '../screen/AppointmentScreen/AppointmentDetailScreen';
+import CHATSCREEN from "../screen/ChatScreen/ChatScreen";
+import CHATSCREENHISTORY from "../screen/ChatScreen/ChatScreenHistory";
+
 
 import * as IMAGE from '../styles/image';
 import * as COLOR from '../styles/colors';
@@ -330,6 +333,27 @@ const HomeStackScreen = () => {
                 name="WebViewScreen"
                 component={WEBVIEWSCREEN}
                 options={{ headerShown: false }}
+            />
+            <HomeStack.Screen
+                name="ChatScreen"
+                component={CHATSCREEN}
+                // options={{
+                //     headerTitleAlign: KEY.CENTER,
+                //     title: languageConfig.chattext,
+                //     headerTintColor: COLOR.WHITE,
+                //     headerStyle: { backgroundColor: COLOR.DEFALUTCOLOR }
+                // }}
+                options={{ headerShown: false }}
+            />
+            <HomeStack.Screen
+                name="ChatScreenHistory"
+                component={CHATSCREENHISTORY}
+                options={{
+                    headerTitleAlign: KEY.CENTER,
+                    title: languageConfig.chattext,
+                    headerTintColor: COLOR.WHITE,
+                    headerStyle: { backgroundColor: COLOR.DEFALUTCOLOR }
+                }}
             />
         </HomeStack.Navigator>
     );

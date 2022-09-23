@@ -422,5 +422,7 @@ export default {
     splashtext1: "Initialization application",
     splashtext2: "Initialization your app",
     splashtext3: "please wait few Seconds",
-    splashtext4: "auto restart app"
+    splashtext4: "auto restart app",
+
+    chattext: "Chat"
 }

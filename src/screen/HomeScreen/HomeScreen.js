@@ -66,6 +66,7 @@ let MenuDefaultArray = [
   { "menuname": "team", "title": "Team", "screenname": "MyTeamScreen", "colorcode": "#0099EB", "imageurl": IMAGE.IC_GROUP, "height": 20, "width": 20 },
   { "menuname": "support", "title": "Support", "screenname": "SupportScreen", "colorcode": "#F9C688", "imageurl": IMAGE.SUPPORT_ICON, "height": 25, "width": 14 },
   { "menuname": "referfriend", "title": "Refer a Friend", "screenname": "ReferFriendScreen", "colorcode": "#9E7347", "imageurl": IMAGE.REFERICON, "height": 20, "width": 20 },
+  { "menuname": "chat", "title": "Chat", "screenname": "ChatScreenHistory", "colorcode": "#5F1844", "imageurl": IMAGE.CHAT_ICON, "height": 23, "width": 23, },
 ];
 
 //HOME SCREEN FUNCTION
