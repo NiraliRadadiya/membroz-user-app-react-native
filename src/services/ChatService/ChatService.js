@@ -17,15 +17,15 @@ function RecentChatService(id) {
             },
             {
                 "searchfield": "formid",
-                "searchvalue": "6319d8ee5d3f8a023af900e6",
+                "searchvalue": "6333d90bc8e9e31addd12dc8",
                 "criteria": "eq",
                 "datatype": "objectId"
             },
             {
-                "searchfield": "addedby",
+                "searchfield": "property.userid",
                 "searchvalue": id,
                 "criteria": "eq",
-                "datatype": "objectId"
+                "datatype": "text"
             }
         ], "formname": "livechat"
     }

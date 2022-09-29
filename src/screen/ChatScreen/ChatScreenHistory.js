@@ -22,6 +22,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import axiosConfig from '../../helpers/axiosConfig';
 import { useFocusEffect } from '@react-navigation/native';
 import { firebase } from '@react-native-firebase/crashlytics';
+import * as FONT from '../../styles/typography';
 import { RecentChatService } from "../../services/ChatService/ChatService";
 const noProfile = 'https://res.cloudinary.com/dnogrvbs2/image/upload/v1613538969/profile1_xspwoy.png';
 
@@ -110,9 +111,9 @@ const ChatScreenHistory = (props, item) => {
                         }
                     </View>
                     <View style={{ marginRight: 60 }}>
-                        <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                            <Text style={{ fontSize: 22, fontWeight: 'bold', color: "#000000", textTransform: 'capitalize' }}>
-                                {item && item.contextid && item.contextid.fullname && item.contextid.fullname.split(' ')[0]}</Text>
+                        <View style={{ justifyContent: KEY.CENTER, alignItems: KEY.CENTER }}>
+                            <Text style={{ fontSize: FONT.FONT_SIZE_18, fontWeight: 'bold', color: "#000000", textTransform: 'capitalize', width: WIDTH / 2, textAlign: KEY.CENTER }}>
+                                {item && item.contextid && item.contextid.fullname && item.contextid.fullname}</Text>
                             <Text style={{ fontSize: 14, color: "#999999" }}>{item.contextid && item.contextid.property && item.contextid.property.live ? item.contextid.property.live : null}</Text>
                         </View>
                     </View>

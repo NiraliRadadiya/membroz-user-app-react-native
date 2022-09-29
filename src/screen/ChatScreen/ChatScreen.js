@@ -33,6 +33,7 @@ const ChatScreen = (props, { navigation }) => {
     const [messages, setMessages] = useState([]);
     const [formdataDetails, setFormdataDetails] = useState(null);
     const [sender, setsender] = useState(null);
+    let memberinfo;
     let formdatas;
     let formId;
 
@@ -41,6 +42,7 @@ const ChatScreen = (props, { navigation }) => {
         () => {
             AsyncStorage.getItem(AUTHUSER).then((res) => {
                 let sender = JSON.parse(res)._id; //member id
+                memberinfo = JSON.parse(res);
                 setsender(sender);
                 setloading(true);
                 newChat(sender, MemberDetails).then((id) => {
@@ -65,7 +67,8 @@ const ChatScreen = (props, { navigation }) => {
 
     const startChat = async (sender, memberdata) => {
         const body = {
-            formid: '6319d8ee5d3f8a023af900e6',
+            // formid: '6319d8ee5d3f8a023af900e6',
+            formid: '6333d90bc8e9e31addd12dc8',
             contextid: memberdata, //member id
             onModel: "Member",
             onModelAddedby: "User",
@@ -73,7 +76,10 @@ const ChatScreen = (props, { navigation }) => {
             addedby: sender, //user id
             property: {
                 memberid: memberdata,
-                userid: sender
+                userid: sender,
+                membername: MemberDetails.fullname,
+                username: memberinfo.fullname,
+
             }
         }
         try {
@@ -129,7 +135,8 @@ const ChatScreen = (props, { navigation }) => {
     //update chat id
     const updateChatdata = async (chatId, sender, memberdata) => {
         let body = {
-            formid: '6319d8ee5d3f8a023af900e6',
+            // formid: '6319d8ee5d3f8a023af900e6',
+            formid: '6333d90bc8e9e31addd12dc8',
             contextid: memberdata,
             onModel: "Member",
             onModelAddedby: "User",
@@ -137,7 +144,10 @@ const ChatScreen = (props, { navigation }) => {
             addedby: sender,
             property: {
                 memberid: memberdata,
-                fierbasechatid: chatId
+                fierbasechatid: chatId,
+                userid: sender,
+                membername: MemberDetails.fullname,
+                username: memberinfo.fullname
             }
         }
         try {
@@ -157,8 +167,8 @@ const ChatScreen = (props, { navigation }) => {
 
     //current chat in find chat is end or not
     const FindChatByIdService = async (id) => {
-        const response = await FindChatById(id);
         try {
+            const response = await FindChatById(id);
             if (response.data != null && response.data != 'undefind' && response.status == 200) {
                 setFormdataDetails(response.data[0]);
             }
@@ -190,7 +200,6 @@ const ChatScreen = (props, { navigation }) => {
         })
             .then(response => response.json())
             .then((responseData) => {
-                console.log('responseData', responseData);
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -304,7 +313,7 @@ const ChatScreen = (props, { navigation }) => {
                     width: 0
                 },
                 elevation: 2,
-                width: WIDTH - 40,
+                width: WIDTH - 20,
                 //height: Platform.OS === "android" ? 0 : 50,
                 flex: Platform.OS === "android" ? 1 : 0,
                 borderRadius: 15,
@@ -329,7 +338,7 @@ const ChatScreen = (props, { navigation }) => {
                         marginRight: 5,
                         lineHeight: 20,
                         fontSize: 16,
-                        color: "#000000"
+                        color: "#000000",
                     }}
                 />
             )}
@@ -388,7 +397,8 @@ const ChatScreen = (props, { navigation }) => {
                     </View>
                 </View>
             </View>
-            <View style={{ flex: 1, }}>
+
+            <View style={{ flex: 1 }}>
                 <GiftedChat
                     keyboardShouldPersistTaps={'always'}
                     user={{ _id: sender }}
